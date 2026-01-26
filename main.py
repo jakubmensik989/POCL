@@ -7,9 +7,9 @@ online_dataset = get_online_dataset()
 contrast_dataset = get_contrast_dataset()
 model_mas = None
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-pretrain_model = ADDer(32, 32).to(device)
+pretrain_model = ADDer(6, 6).to(device)
 optimizer_pretrain = torch.optim.Adam(pretrain_model.parameters(), lr=0.003)
-classifier = Classifier(32, 2).to(device)
+classifier = Classifier(6, 2).to(device)
 train_optimizer = torch.optim.Adam([{'params': pretrain_model.parameters(), 'lr': 0.001},
                                     {'params': classifier.parameters(), 'lr': 0.003}], lr=0.01)
 

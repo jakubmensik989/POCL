@@ -27,8 +27,8 @@ def get_contrast_dataset():
     for i in datasettwo:
         element=i[0]
         edges=i[1]
-        y = element[:, 5]
-        element = np.delete(element, 5, axis=1)
+        y = element[:, -1]
+        element = np.delete(element, -1, axis=1)
         element = torch.tensor(element, dtype=torch.float)
         y = torch.tensor(y.T, dtype=torch.bool)
         edges = torch.LongTensor(edges).long()
